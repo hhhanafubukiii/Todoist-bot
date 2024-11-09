@@ -1,4 +1,4 @@
-module github.com/hhhanafubukiii/Golang-projects/TodoistBot
+module github.com/hhhanafubukiii/TodoistBot
 
 go 1.23.1
 
