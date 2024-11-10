@@ -6,7 +6,6 @@ import (
 	"github.com/jackc/pgx/v4"
 	"github.com/jackc/pgx/v4/pgxpool"
 	"log"
-	"os"
 )
 
 type Postgres struct {
