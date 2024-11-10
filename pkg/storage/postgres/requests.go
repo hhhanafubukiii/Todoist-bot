@@ -20,7 +20,7 @@ func init() {
 	}
 }
 
-func (pg *postgres) SaveAccessToken(ctx context.Context, chatId int64, accessToken string) error {
+func (pg *Postgres) SaveAccessToken(ctx context.Context, chatId int64, accessToken string) error {
 	conn := getConn()
 	query := fmt.Sprintf(`INSERT INTO tokens(chat_id, access_token) VALUES (%d, %s)`, chatId, accessToken)
 	_, err := conn.Exec(ctx, query, chatId, accessToken)
@@ -31,7 +31,7 @@ func (pg *postgres) SaveAccessToken(ctx context.Context, chatId int64, accessTok
 	return nil
 }
 
-func (pg *postgres) GetAccessToken(ctx context.Context, chatId int64) (string, error) {
+func (pg *Postgres) GetAccessToken(ctx context.Context, chatId int64) (string, error) {
 	conn := getConn()
 	defer conn.Close(context.Background())
 	query := fmt.Sprintf(`SELECT access_token FROM tokens WHERE chat_id = %d`, chatId)
