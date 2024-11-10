@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/jackc/pgx/v4"
 	"github.com/jackc/pgx/v4/pgxpool"
-	"github.com/joho/godotenv"
 	"log"
 	"os"
 )
@@ -14,14 +13,8 @@ type postgres struct {
 	db *pgxpool.Pool
 }
 
-func init() {
-	if err := godotenv.Load(); err != nil {
-		log.Print("No .env file found")
-	}
-}
-
 func (pg *postgres) SaveAccessToken(ctx context.Context, chatId int64, accessToken string, databaseURL string) error {
-	conn := getConn()
+	conn := getConn(databaseURL)
 	query := fmt.Sprintf(`INSERT INTO tokens(chat_id, access_token) VALUES (%d, %s)`, chatId, accessToken)
 	_, err := conn.Exec(ctx, query, chatId, accessToken)
 	if err != nil {
@@ -32,7 +25,7 @@ func (pg *postgres) SaveAccessToken(ctx context.Context, chatId int64, accessTok
 }
 
 func (pg *postgres) GetAccessToken(ctx context.Context, chatId int64, databaseURL string) (accessToken string, err error) {
-	conn := getConn()
+	conn := getConn(databaseURL)
 	query := fmt.Sprintf(`SELECT access_token FROM tokens WHERE chat_id = %d`, chatId)
 
 	row, err := pg.db.Query(ctx, query)
@@ -51,8 +44,8 @@ func (pg *postgres) GetAccessToken(ctx context.Context, chatId int64, databaseUR
 	return
 }
 
-func getConn() *pgx.Conn {
-	conn, err := pgx.Connect(context.Background(), os.Getenv("databaseURL"))
+func getConn(databaseURL) *pgx.Conn {
+	conn, err := pgx.Connect(context.Background(), databaseURL)
 	if err != nil {
 		log.Fatal("Unable to connect to database", err)
 	}
