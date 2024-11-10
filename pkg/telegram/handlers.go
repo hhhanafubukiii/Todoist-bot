@@ -45,5 +45,5 @@ func (b *Bot) handleCommand(message *tgbotapi.Message) error {
 }
 
 func (b *Bot) handleCommandStart(message *tgbotapi.Message) error {
-
+	return nil
 }
