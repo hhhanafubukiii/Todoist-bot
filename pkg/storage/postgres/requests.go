@@ -10,7 +10,7 @@ import (
 	"os"
 )
 
-type postgres struct {
+type Postgres struct {
 	db *pgxpool.Pool
 }
 
