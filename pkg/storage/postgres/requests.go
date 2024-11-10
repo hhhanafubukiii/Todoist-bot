@@ -44,7 +44,7 @@ func (pg *Postgres) GetAccessToken(ctx context.Context, chatId int64, databaseUR
 	return
 }
 
-func getConn(databaseURL) *pgx.Conn {
+func getConn(databaseURL string) *pgx.Conn {
 	conn, err := pgx.Connect(context.Background(), databaseURL)
 	if err != nil {
 		log.Fatal("Unable to connect to database", err)
