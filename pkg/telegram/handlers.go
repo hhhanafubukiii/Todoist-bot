@@ -1,7 +1,6 @@
 package telegram
 
 import (
-	"context"
 	"log"
 	"os"
 
@@ -46,7 +45,7 @@ func (b *Bot) handleCommand(message *tgbotapi.Message) error {
 }
 
 func (b *Bot) handleCommandStart(message *tgbotapi.Message) error {
-	_, err := b.db.GetAccessToken(context.Background(), message.Chat.ID, os.Getenv("databaseURL"))
+	_, err := b.db.GetAccessToken(message.Chat.ID, os.Getenv("dbURL"))
 
 	if err != nil {
 		err = b.initAuthorizationProcess(message)
