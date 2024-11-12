@@ -35,14 +35,13 @@ func (pg *Postgres) SaveAccessToken(ctx context.Context, chatId int64, accessTok
 
 func (pg *Postgres) GetAccessToken(chatId int64, databaseURL string) (accessToken string, err error) {
 	db := getConn(databaseURL)
+	defer db.Close()
 	query := fmt.Sprintf(`SELECT access_token FROM tokens WHERE chat_id = %d`, chatId)
 
 	err = db.QueryRow(query).Scan(&accessToken)
 	if err != nil {
 		return "", err
 	}
-
-	defer db.Close()
 
 	err = db.Ping()
 	if err != nil {
