@@ -1,4 +1,4 @@
-module Todoist-bot
+module github.com/hhhanafubukiii/Todoist-bot
 
 go 1.23.1
 
