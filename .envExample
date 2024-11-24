@@ -1,0 +1,15 @@
+token=8028755897:AAHUZpcyHRJN2w_PTUnBPzj7fySAjYSsVkw
+
+connStr=user=hana password=hana123 dbname=tokendb sslmode=disable
+
+client_id=e41845341f7f45058858428402e03572
+
+client_secret=11eaf207ab204ed798ec95743da23607
+
+scope=data:read_write,data:delete
+
+databaseURL="postgres://postgres:12345@localhost:5438/postgres?sslmode=disable"
+
+botURL=http://web.telegram.org/k/#@Todoist_tasks_tg_bot
+
+serverURL=http://localhost:80/
