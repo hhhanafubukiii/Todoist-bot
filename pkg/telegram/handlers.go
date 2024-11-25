@@ -71,10 +71,26 @@ func (b *Bot) handleCommandAddTask(message *tgbotapi.Message) error {
 		return err
 	}
 
-	// fsm.State = "AddTaskPriority"
+	// err := b.fsm.Event("addTaskName")
 	return nil
 }
 
-func (b *Bot) handleCommandAddTaskPriority(message *tgbotapi.Message) error {
+func (b *Bot) handleTaskName(message *tgbotapi.Message) error {
 	// ...
+	// err := b.fsm.Event("addTaskPriority")
+}
+
+func (b *Bot) handleCommandTaskPriority(message *tgbotapi.Message) error {
+	// ...
+	// err := b.fsm.Event("addTaskDeadline")
+}
+
+func (b *Bot) handleTaskDeadline(message *tgbotapi.Message) error {
+	// ...
+	// err := b.fsm.Event("addTaskDescription")
+}
+
+func (b *Bot) handleTaskDescription(message *tgbotapi.Message) error {
+	// ...
+	// err := b.fsm.Event("default")
 }
