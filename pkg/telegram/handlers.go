@@ -64,18 +64,6 @@ func (b *Bot) handleCommandStart(message *tgbotapi.Message) error {
 }
 
 func (b *Bot) handleCommandAddTask(message *tgbotapi.Message) error {
-	// Это логика ответа на сообщение с описанием таска
-	//token, _ := b.db.GetAccessToken(message.Chat.ID, databaseURL)
-	//if token == "" {
-	//	log.Fatal("no access token found")
-	//}
-	//
-	//task := utils.FormatMessage(message.Text)
-	//err := b.client.AddTask(task.name, task.priority, task.description, task.date, token)
-	//if err != nil {
-	//	log.Fatal("cannot add task!: ", err)
-	//}
-
 	msgText := configs.Lexicon["response"]["new_task"]
 	msg := tgbotapi.NewMessage(message.Chat.ID, msgText)
 	_, err := b.bot.Send(msg)
@@ -83,5 +71,10 @@ func (b *Bot) handleCommandAddTask(message *tgbotapi.Message) error {
 		return err
 	}
 
+	// fsm.State = "AddTaskPriority"
 	return nil
+}
+
+func (b *Bot) handleCommandAddTaskPriority(message *tgbotapi.Message) error {
+	// ...
 }
