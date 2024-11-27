@@ -80,7 +80,7 @@ func (b *Bot) handleTaskName(message *tgbotapi.Message) error {
 	// err := b.fsm.Event("addTaskPriority")
 }
 
-func (b *Bot) handleCommandTaskPriority(message *tgbotapi.Message) error {
+func (b *Bot) handleTaskPriority(message *tgbotapi.Message) error {
 	// ...
 	// err := b.fsm.Event("addTaskDeadline")
 }
