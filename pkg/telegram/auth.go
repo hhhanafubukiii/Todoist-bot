@@ -1,6 +1,18 @@
 package telegram
 
 import (
+	"fmt"
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	todoist "github.com/hhhanafubukiii/go-todoist-sdk"
+	"github.com/joho/godotenv"
+	"log"
+	"net/http"
+	"os"
+	"strconv"
+)
+
+// aaa
+import (
 	"Todoist-bot/pkg/config"
 	"fmt"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
